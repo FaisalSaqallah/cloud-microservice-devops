@@ -1,7 +1,6 @@
-import http.client
+from app import add_task
 
-def test_get_todos():
-    conn = http.client.HTTPConnection("localhost", 8000)
-    conn.request("GET", "/todos")
-    res = conn.getresponse()
-    assert res.status == 200
+def test_add_task():
+    result = add_task("Test task")
+    assert result["task"] == "Test task"
+    assert result["completed"] == False
