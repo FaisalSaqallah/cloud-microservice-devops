@@ -28,7 +28,7 @@ jobs:
           pytest > test-results/report.txt
 
       - name: ⬆️ Upload test report as artifact
-        uses: actions/upload-artifact@3d45a69e3545e2c08b7b25d1c2eeb6da15c73c1b
+        uses: actions/upload-artifact@v3
         with:
           name: pytest-report
           path: test-results/report.txt
