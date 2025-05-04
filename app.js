@@ -1,5 +1,5 @@
 // API URL
-const API_URL = 'http://localhost:8000/todos';
+const API_URL = "https://todo-api-3g3w.onrender.com/todos";
 // DOM Elements
 const todoInput = document.getElementById('new-todo');
 const addButton = document.getElementById('add-btn');
