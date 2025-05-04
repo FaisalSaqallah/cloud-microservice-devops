@@ -1,4 +1,4 @@
-name: CI - Build Python ToDo App
+name: CI - Build and Test Todo App
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  build-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,8 +22,16 @@ jobs:
       - name: ✅ Install pytest
         run: pip install pytest
 
-      - name: ✅ Run unit tests
-        run: pytest
+      - name: 🧪 Run tests and save report
+        run: |
+          mkdir -p test-results
+          pytest > test-results/report.txt
+
+      - name: ⬆️ Upload test report as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: pytest-report
+          path: test-results/report.txt
 
       - name: 🐳 Build Docker image
         run: docker build -t todo-app .
