@@ -25,8 +25,8 @@ jobs:
 
       - name: 🧪 Run tests and save report locally
         run: |
-          mkdir -p ${{ github.workspace }}/test-results
-          pytest > ${{ github.workspace }}/test-results/report.txt
+          mkdir -p test-results
+          pytest | tee test-results/report.txt
 
       - name: 🐳 Build Docker image
         run: docker build -t todo-app .
